@@ -33,8 +33,7 @@ USER node
 
 WORKDIR ${APP_ROOT}/
 
-RUN rm -rf node_modules/
-RUN npm i
+RUN rm -rf node_modules/ && npm i
 RUN npm run build
 
 ENV cgi_headers="true"
