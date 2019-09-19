@@ -17,7 +17,7 @@ RUN apt-get update; \
 WORKDIR /root/
 
 # Turn down the verbosity to default level.
-#ENV NPM_CONFIG_LOGLEVEL warn
+ENV NPM_CONFIG_LOGLEVEL warn
 
 RUN mkdir -p ${APP_ROOT}
 
@@ -26,7 +26,6 @@ WORKDIR ${APP_ROOT}
 COPY --chown=node:node function/app/ ./
 COPY --chown=node:node package.json ./
 
-##RUN rm -rf node_modules/ ; npm install -g --save-dev @babel/core@~7.6.0 @babel/node@~7.6.1
 ## use/enable node user
 USER node
 

@@ -88,7 +88,8 @@ import OpenfaasLogo from '~/components/OpenfaasLogo.vue'
 export default {
   components: {
     Logo,
-    VuetifyLogo
+    VuetifyLogo,
+    OpenfaasLogo
   }
 }
 </script>
