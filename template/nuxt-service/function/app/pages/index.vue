@@ -12,7 +12,7 @@
       <div class="text-center">
         <logo />
         <vuetify-logo />
-        <openfaas-logo />
+        <OpenfaasLogo/>
       </div>
       <v-card>
         <v-card-title class="headline">

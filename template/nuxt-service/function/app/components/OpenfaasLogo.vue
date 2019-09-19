@@ -1,7 +1,7 @@
 <template>
   <img
     class="OpenFaasLogo"
-    alt="Vuetify Logo"
+    alt="OpenFaaS Logo"
     src="/OpenFaaS_logo_stacked_opaque.png"
   >
 </template>
