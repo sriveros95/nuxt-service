@@ -57,6 +57,7 @@
           >
             Nuxt Documentation
           </a>
+          <br>
           <a
             href="https://docs.openfaas.com/"
             target="_blank"
