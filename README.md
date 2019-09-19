@@ -22,17 +22,19 @@ This template is experimental and I would like your feedback through GitHub issu
 
 ## Get started
 
-You can create or scaffold a new microservice using the [OpenFaaS CLI](https://github.com/openfaas/faas-cli).
+You can create or scaffold a new nuxt-app using the [OpenFaaS CLI](https://github.com/openfaas/faas-cli).
 
 ```
 # USERNAME is your Docker Hub account or private Docker registry
 $ export USERNAME=alexellisuk
 
 $ faas template pull https://github.com/sriveros95/nuxt-service
-$ faas new --lang nuxt-service microservice1 --prefix="${USERNAME}"
+$ faas new --lang nuxt-service nuxt-app --prefix="${USERNAME}"
 ```
 
 The idea is that one only needs to put the files needed to build the app in the app folder.
+
+[Needs a FunctionIngress to work!](https://github.com/openfaas-incubator/ingress-operator)
 
 Move/Merge package.json out of app folder into nuxt-service folder.
 
