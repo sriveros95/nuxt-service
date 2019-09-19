@@ -18,7 +18,8 @@
     "nuxt": "^2.0.0",
     "@nuxtjs/axios": "^5.3.6",
     "@nuxtjs/pwa": "^3.0.0-0",
-    "@nuxt/babel-preset-app-edge": "^2.10.0-26147532.7b315534"
+    "@nuxt/babel-preset-app-edge": "^2.10.0-26147532.7b315534",
+    "esm": "^3.2.25"
   },
   "devDependencies": {
     "@nuxtjs/vuetify": "^1.0.0",

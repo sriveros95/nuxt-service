@@ -36,7 +36,7 @@ RUN npm i
 RUN npm run build
 
 #ENV cgi_headers="true"
-ENV fprocess="babel-node --presets=@nuxt/babel-preset-app-edge .nuxt/server.js"
+ENV fprocess="node -r esm .nuxt/server.js"
 #ENV mode="http"
 #ENV upstream_url="http://127.0.0.1:3000"
 EXPOSE 3000
