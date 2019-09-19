@@ -26,13 +26,13 @@ WORKDIR ${APP_ROOT}
 COPY --chown=node:node function/app/ ./
 COPY --chown=node:node package.json ./
 
-RUN npm install -g --save-dev @babel/core@~7.6.0 @babel/node@~7.6.1 @nuxt/babel-preset-app-edge
+RUN rm -rf node_modules/ ; npm install -g --save-dev @babel/core@~7.6.0 @babel/node@~7.6.1 @nuxt/babel-preset-app-edge
 ## use/enable node user
 USER node
 
 WORKDIR ${APP_ROOT}/
 
-RUN rm -rf node_modules/ && npm i
+RUN npm i
 RUN npm run build
 
 #ENV cgi_headers="true"
