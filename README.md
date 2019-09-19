@@ -1,11 +1,8 @@
 OpenFaaS vue/nuxt micro-service template
 =============================================
 WIP
-status: there is hope
 
-Valuable knowledge: [A Dockerized SSR runtime to develop, run, and deploy your frontend webapp. by thegreenhouseio](https://github.com/thegreenhouseio/docker-ssr)
-
-This template provides vue/nuxt and full access to [express.js](http://expressjs.com/en/api.html#req.is) for building microservices for [OpenFaaS](https://www.openfaas.com), Docker, Knative and Cloud Run.
+This template provides an easy way to deploy vue/nuxt on [OpenFaaS](https://www.openfaas.com), Docker, Knative and Cloud Run for building microservices.
 
 With this template you can create a new microservice and deploy it to a platform like [OpenFaaS](https://www.openfaas.com) for:
 
