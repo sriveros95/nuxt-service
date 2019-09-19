@@ -17,7 +17,7 @@ RUN apt-get update; \
 WORKDIR /root/
 
 # Turn down the verbosity to default level.
-ENV NPM_CONFIG_LOGLEVEL warn
+#ENV NPM_CONFIG_LOGLEVEL warn
 
 RUN mkdir -p ${APP_ROOT}
 
@@ -32,7 +32,7 @@ USER node
 
 WORKDIR ${APP_ROOT}/
 
-RUN rm -rf node_modules/ ; npm i
+RUN rm -rf node_modules/ ; rm package-lock.json; npm i
 RUN npm run build
 
 #ENV cgi_headers="true"
