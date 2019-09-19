@@ -25,9 +25,6 @@ WORKDIR ${APP_ROOT}
 COPY --chown=node:node function/app/ ./
 COPY --chown=node:node package.json ./
 
-# chmod for tmp is for a buildkit issue (@alexellis)
-RUN chmod 777 /tmp
-
 ## use/enable node user
 USER node
 
@@ -44,6 +41,11 @@ EXPOSE 3000
 ENV exec_timeout="10s"
 ENV write_timeout="15s"
 ENV read_timeout="15s"
+
+USER root
+# chmod for tmp is for a buildkit issue (@alexellis)
+RUN chmod 777 /tmp
+USER node
 
 HEALTHCHECK --interval=3s CMD [ -e /tmp/.lock ] || exit 1
 
