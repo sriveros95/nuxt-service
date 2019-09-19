@@ -17,9 +17,7 @@
     "express": "^4.17.1",
     "nuxt": "^2.9.2",
     "@nuxtjs/axios": "^5.6.0",
-    "@nuxtjs/pwa": "^3.0.0-0",
-    "@nuxt/babel-preset-app-edge": "^2.10.0-26147532.7b315534",
-    "esm": "^3.2.25"
+    "@nuxtjs/pwa": "^3.0.0-0"
   },
   "devDependencies": {
     "@nuxtjs/vuetify": "^1.0.0",
@@ -30,6 +28,5 @@
     "require-extension-hooks": "^0.3.3",
     "require-extension-hooks-babel": "^1.0.0",
     "require-extension-hooks-vue": "^2.0.0"
-  },
-  "esm": "auto"
+  }
 }
