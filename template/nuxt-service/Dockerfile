@@ -10,9 +10,6 @@ ENV APP_ROOT /home/app
 COPY --from=watchdog /fwatchdog /usr/bin/fwatchdog
 RUN chmod +x /usr/bin/fwatchdog
 
-## use node user
-RUN addgroup -S app && adduser -S -g node node
-
 RUN apk --no-cache add ca-certificates
 
 WORKDIR /root/
@@ -27,7 +24,8 @@ WORKDIR ${APP_ROOT}
 COPY --chown=node:node function/app/ ./
 COPY --chown=node:node package.json ./
 
-USER app
+## use/enable node user
+USER node
 
 # This ordering means the npm installation is cached for the outer function handler.
 RUN npm i
