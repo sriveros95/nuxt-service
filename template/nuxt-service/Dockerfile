@@ -1,12 +1,17 @@
 FROM openfaas/of-watchdog:0.5.3 as watchdog
 
 FROM node:10.12.0-alpine as ship
+
 ## Todo update versions
+
+ENV APP_ROOT /home/app
+
+
 COPY --from=watchdog /fwatchdog /usr/bin/fwatchdog
 RUN chmod +x /usr/bin/fwatchdog
 
 ## use node user
-RUN addgroup -S app && adduser -S -g app app
+RUN addgroup -S app && adduser -S -g node node
 
 RUN apk --no-cache add ca-certificates
 
@@ -15,12 +20,14 @@ WORKDIR /root/
 # Turn down the verbosity to default level.
 ENV NPM_CONFIG_LOGLEVEL warn
 
-RUN mkdir -p /home/app
+RUN mkdir -p ${APP_ROOT}
 
 # Wrapper/boot-strapper
-WORKDIR /home/app
-COPY app/ ./
-COPY package.json ./
+WORKDIR ${APP_ROOT}
+COPY --chown=node:node function/app/ ./
+COPY --chown=node:node package.json ./
+
+USER app
 
 # This ordering means the npm installation is cached for the outer function handler.
 RUN npm i
@@ -31,7 +38,7 @@ RUN npm run build
 
 # COPY function node packages and install, adding this as a separate
 # entry allows caching of npm install
-##WORKDIR /home/app/function
+##WORKDIR ${APP_ROOT}/function
 ##COPY function/*.json ./
 ##RUN npm i || :
 
@@ -39,13 +46,10 @@ RUN npm run build
 ##COPY function/ ./
 
 # Set correct permissions to use non root user
-WORKDIR /home/app/
+WORKDIR ${APP_ROOT}/
 
 # chmod for tmp is for a buildkit issue (@alexellis)
-RUN chown app:app -R /home/app \
-    && chmod 777 /tmp
-
-USER app
+RUN chmod 777 /tmp
 
 ENV cgi_headers="true"
 ENV fprocess="node .nuxt/server.js"
