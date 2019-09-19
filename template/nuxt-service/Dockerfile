@@ -1,6 +1,6 @@
 FROM openfaas/of-watchdog:0.7.2 as watchdog
 
-FROM node:12.0-alpine as ship
+FROM node:12.10-slim as ship
 
 ## Todo update versions
 
@@ -10,7 +10,9 @@ COPY --from=watchdog /fwatchdog /usr/bin/fwatchdog
 RUN chmod +x /usr/bin/fwatchdog
 
 
-RUN apk --no-cache add ca-certificates
+RUN apt-get update; \
+    apt-get install -y ca-certificates; \
+    rm -rf /var/lib/apt/lists/*
 
 WORKDIR /root/
 
