@@ -24,6 +24,9 @@ WORKDIR ${APP_ROOT}
 COPY --chown=node:node function/app/ ./
 COPY --chown=node:node package.json ./
 
+# chmod for tmp is for a buildkit issue (@alexellis)
+RUN chmod 777 /tmp
+
 ## use/enable node user
 USER node
 
@@ -43,11 +46,7 @@ RUN npm run build
 # COPY function files and folders
 ##COPY function/ ./
 
-# Set correct permissions to use non root user
 WORKDIR ${APP_ROOT}/
-
-# chmod for tmp is for a buildkit issue (@alexellis)
-RUN chmod 777 /tmp
 
 ENV cgi_headers="true"
 ENV fprocess="node .nuxt/server.js"
