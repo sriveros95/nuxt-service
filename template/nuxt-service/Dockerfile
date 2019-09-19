@@ -9,7 +9,6 @@ ENV APP_ROOT /home/app
 COPY --from=watchdog /fwatchdog /usr/bin/fwatchdog
 RUN chmod +x /usr/bin/fwatchdog
 
-RUN npm install -g --save-dev @babel/core@~7.6.0 @babel/node@~7.6.1 @nuxt/babel-preset-app-edge
 
 RUN apk --no-cache add ca-certificates
 
@@ -25,6 +24,7 @@ WORKDIR ${APP_ROOT}
 COPY --chown=node:node function/app/ ./
 COPY --chown=node:node package.json ./
 
+RUN npm install -g --save-dev @babel/core@~7.6.0 @babel/node@~7.6.1 @nuxt/babel-preset-app-edge
 ## use/enable node user
 USER node
 
