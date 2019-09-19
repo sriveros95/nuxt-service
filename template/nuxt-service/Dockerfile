@@ -6,7 +6,6 @@ FROM node:10.12.0-alpine as ship
 
 ENV APP_ROOT /home/app
 
-
 COPY --from=watchdog /fwatchdog /usr/bin/fwatchdog
 RUN chmod +x /usr/bin/fwatchdog
 
@@ -33,6 +32,7 @@ USER node
 # This ordering means the npm installation is cached for the outer function handler.
 RUN npm i
 RUN npm run build
+RUN npm run start
 
 # Copy outer function handler
 #COPY index.js ./
