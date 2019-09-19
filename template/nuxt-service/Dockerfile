@@ -41,9 +41,9 @@ ENV fprocess="babel-node --presets=@nuxt/babel-preset-app-edge server.js"
 ENV mode="http"
 ENV upstream_url="http://127.0.0.1:3000"
 EXPOSE 3000
-ENV exec_timeout="20s"
-ENV write_timeout="33s"
-ENV read_timeout="33s"
+ENV exec_timeout="10s"
+ENV write_timeout="15s"
+ENV read_timeout="15s"
 
 HEALTHCHECK --interval=3s CMD [ -e /tmp/.lock ] || exit 1
 
