@@ -2,7 +2,7 @@
   <img
     class="OpenFaasLogo"
     alt="OpenFaaS Logo"
-    src="/OpenFaaS_logo_stacked_opaque.png"
+    src="/OpenFaas_whale.png"
   >
 </template>
 
