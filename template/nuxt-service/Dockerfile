@@ -31,7 +31,14 @@ USER node
 
 WORKDIR ${APP_ROOT}/
 
+
 RUN rm -rf node_modules/ ; rm package-lock.json; npm i
+
+# COPY function node packages and install, adding this as a separate
+# entry allows caching of npm install
+COPY function/app/*.json ./
+RUN npm i || :
+
 RUN npm run build
 
 #ENV cgi_headers="true"
