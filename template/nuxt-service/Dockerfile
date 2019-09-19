@@ -26,17 +26,17 @@ WORKDIR ${APP_ROOT}
 COPY --chown=node:node function/app/ ./
 COPY --chown=node:node package.json ./
 
-RUN rm -rf node_modules/ ; npm install -g --save-dev @babel/core@~7.6.0 @babel/node@~7.6.1
+##RUN rm -rf node_modules/ ; npm install -g --save-dev @babel/core@~7.6.0 @babel/node@~7.6.1
 ## use/enable node user
 USER node
 
 WORKDIR ${APP_ROOT}/
 
-RUN npm i
+RUN rm -rf node_modules/ ; npm i
 RUN npm run build
 
 #ENV cgi_headers="true"
-ENV fprocess="babel-node -r esm --presets=@nuxt/babel-preset-app-edge .nuxt/server.js"
+ENV fprocess="node -r esm .nuxt/server.js"
 #ENV mode="http"
 #ENV upstream_url="http://127.0.0.1:3000"
 EXPOSE 3000
