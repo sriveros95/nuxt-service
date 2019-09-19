@@ -1,6 +1,6 @@
 FROM openfaas/of-watchdog:0.7.2 as watchdog
 
-FROM node:12.10-slim as ship
+FROM node:10.16-slim as ship
 
 ## Todo update versions
 
