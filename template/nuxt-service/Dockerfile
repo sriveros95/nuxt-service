@@ -29,23 +29,11 @@ RUN chmod 777 /tmp
 ## use/enable node user
 USER node
 
-# This ordering means the npm installation is cached for the outer function handler.
+WORKDIR ${APP_ROOT}/
+
+RUN rm -rf node_modules/
 RUN npm i
 RUN npm run build
-
-# Copy outer function handler
-#COPY index.js ./
-
-# COPY function node packages and install, adding this as a separate
-# entry allows caching of npm install
-##WORKDIR ${APP_ROOT}/function
-##COPY function/*.json ./
-##RUN npm i || :
-
-# COPY function files and folders
-##COPY function/ ./
-
-WORKDIR ${APP_ROOT}/
 
 ENV cgi_headers="true"
 ENV fprocess="node .nuxt/server.js"
