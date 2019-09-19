@@ -9,7 +9,7 @@ ENV APP_ROOT /home/app
 COPY --from=watchdog /fwatchdog /usr/bin/fwatchdog
 RUN chmod +x /usr/bin/fwatchdog
 
-RUN npm install --save-dev @babel/core@~7.6.0 @babel/node@~7.6.1 @nuxt/babel-preset-app-edge
+RUN npm install -g --save-dev @babel/core@~7.6.0 @babel/node@~7.6.1 @nuxt/babel-preset-app-edge
 
 RUN apk --no-cache add ca-certificates
 
@@ -34,7 +34,7 @@ RUN rm -rf node_modules/ && npm i
 RUN npm run build
 
 #ENV cgi_headers="true"
-ENV fprocess="node ./node_modules/babel-cli/bin/babel-node.js --presets=@nuxt/babel-preset-app-edge .nuxt/server.js"
+ENV fprocess="babel-node --presets=@nuxt/babel-preset-app-edge .nuxt/server.js"
 #ENV mode="http"
 #ENV upstream_url="http://127.0.0.1:3000"
 EXPOSE 3000
