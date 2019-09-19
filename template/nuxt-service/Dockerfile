@@ -40,7 +40,7 @@ ENV cgi_headers="true"
 ENV fprocess="babel-node --presets=@nuxt/babel-preset-app-edge server.js"
 ENV mode="http"
 ENV upstream_url="http://127.0.0.1:3000"
-
+EXPOSE 3000
 ENV exec_timeout="20s"
 ENV write_timeout="33s"
 ENV read_timeout="33s"
