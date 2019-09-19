@@ -38,9 +38,9 @@ ENV fprocess="babel-node --presets=@nuxt/babel-preset-app-edge .nuxt/server.js"
 ENV mode="http"
 ENV upstream_url="http://127.0.0.1:3000"
 EXPOSE 3000
-ENV exec_timeout="10s"
-ENV write_timeout="15s"
-ENV read_timeout="15s"
+#ENV exec_timeout="10s"
+#ENV write_timeout="15s"
+#ENV read_timeout="15s"
 
 USER root
 # chmod for tmp is for a buildkit issue (@alexellis)
