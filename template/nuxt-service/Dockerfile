@@ -42,9 +42,9 @@ RUN npm i || :
 RUN npm run build
 
 #ENV cgi_headers="true"
-ENV fprocess="npm start"
 ENV mode="http"
 ENV upstream_url="http://127.0.0.1:3000"
+ENV fprocess="npm start"
 EXPOSE 3000
 #ENV exec_timeout="10s"
 #ENV write_timeout="15s"
